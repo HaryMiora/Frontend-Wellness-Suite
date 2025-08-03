@@ -1,4 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import photo1 from '../assets/photo1.jpg';
+import photo2 from '../assets/photo2.jpg';
+import photo3 from '../assets/photo3.webp';
+import photo4 from '../assets/photo4.webp';
+import massage from '../assets/massage.jpg';
+import soinsVisage from '../assets/soins-visage.jpg';
+import spaThermal from '../assets/spa-thermal.jpg';
 
 const LandingPage = () => {
   const testimonials = [
@@ -35,7 +42,7 @@ const LandingPage = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="pt-36 pb-20 flex items-center justify-center min-h-screen bg-[url('https://images.unsplash.com/photo-1614594975525-8fdadad39d4b?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center bg-no-repeat relative">
+      <section className="pt-36 pb-20 flex items-center justify-center min-h-screen bg-[url(${photo1}')] bg-cover bg-center bg-no-repeat relative">
         <div className="absolute inset-0 bg-black opacity-40"></div>
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center">
           <h2 className="text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
@@ -46,22 +53,22 @@ const LandingPage = () => {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <img
-              src="https://images.unsplash.com/photo-1519415510236-7184a8212b7e?auto=format&fit=crop&w=300&q=80"
+              src={photo1}
               alt="Massage"
               className="w-full h-40 object-cover rounded-lg shadow-md rotate-2 hover:rotate-0 transition-transform duration-300"
             />
             <img
-              src="https://images.unsplash.com/photo-1600335895229-6e7557d1c3be?auto=format&fit=crop&w=300&q=80"
+              src={photo2}
               alt="Soins du visage"
               className="w-full h-40 object-cover rounded-lg shadow-md -rotate-2 hover:rotate-0 transition-transform duration-300"
             />
             <img
-              src="https://images.unsplash.com/photo-1596433765721-2c087170ba4f?auto=format&fit=crop&w=300&q=80"
+              src={photo3}
               alt="Spa thermal"
               className="w-full h-40 object-cover rounded-lg shadow-md rotate-1 hover:rotate-0 transition-transform duration-300"
             />
             <img
-              src="https://images.unsplash.com/photo-1614594975525-8fdadad39d4b?auto=format&fit=crop&w=300&q=80"
+              src={photo4}
               alt="Ambiance spa"
               className="w-full h-40 object-cover rounded-lg shadow-md -rotate-1 hover:rotate-0 transition-transform duration-300"
             />
@@ -92,7 +99,7 @@ const LandingPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="p-6 rounded-xl hover:shadow-xl transition-all duration-300">
               <img
-                src="https://images.unsplash.com/photo-1519415510236-7184a8212b7e?auto=format&fit=crop&w=400&q=80"
+                src={massage}
                 alt="Massage"
                 className="w-full h-64 object-cover rounded-lg mb-6"
               />
@@ -102,7 +109,7 @@ const LandingPage = () => {
             </div>
             <div className="p-6 rounded-xl hover:shadow-xl transition-all duration-300">
               <img
-                src="https://images.unsplash.com/photo-1600335895229-6e7557d1c3be?auto=format&fit=crop&w=400&q=80"
+                src={soinsVisage}
                 alt="Soins du visage"
                 className="w-full h-64 object-cover rounded-lg mb-6"
               />
@@ -112,7 +119,7 @@ const LandingPage = () => {
             </div>
             <div className="p-6 rounded-xl hover:shadow-xl transition-all duration-300">
               <img
-                src="https://images.unsplash.com/photo-1596433765721-2c087170ba4f?auto=format&fit=crop&w=400&q=80"
+                src={spaThermal}
                 alt="Spa thermal"
                 className="w-full h-64 object-cover rounded-lg mb-6"
               />
