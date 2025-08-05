@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from "axios";
 
 const RegisterPage = () => {
   const [fullName, setFullName] = useState('');
@@ -10,14 +11,33 @@ const RegisterPage = () => {
     alert('Inscription avec Google en cours... (À implémenter avec une API)');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert('Les mots de passe ne correspondent pas');
-      return;
+        alert("Les mots de passe ne correspondent pas ❌");
+        return;
     }
-    alert(`Inscription : ${fullName}, ${email} (À implémenter)`);
-  };
+
+    try {
+        const res = await axios.post("http://localhost:5000/api/auth/register", {
+        name: fullName,
+        email,
+        password,
+        role: "CLIENT" // Par défaut
+        });
+
+        // Sauvegarde du token JWT
+        localStorage.setItem("token", res.data.token);
+
+        alert("Inscription réussie ✅");
+        console.log("Nouvel utilisateur :", res.data.user);
+
+        // Redirection par exemple
+        window.location.href = "/dashboard";
+    } catch (err) {
+        alert(err.response?.data?.error || "Erreur lors de l'inscription ❌");
+    }
+  };  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FAFAF9] to-[#E5E7EB] flex items-center justify-center font-sans">

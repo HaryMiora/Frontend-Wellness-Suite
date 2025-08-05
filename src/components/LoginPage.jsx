@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from "axios";
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -8,10 +9,26 @@ const LoginPage = () => {
     alert('Connexion avec Google en cours... (À implémenter avec une API)');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`Connexion avec email: ${email} et mot de passe: ${password} (À implémenter)`);
-  };
+    try {
+        const res = await axios.post("http://localhost:5000/api/auth/login", {
+        email,
+        password
+        });
+
+        // Sauvegarde du token JWT
+        localStorage.setItem("token", res.data.token);
+
+        alert("Connexion réussie ✅");
+        console.log("Utilisateur connecté :", res.data.user);
+
+        // Redirection par exemple
+        window.location.href = "/dashboard";
+    } catch (err) {
+        alert(err.response?.data?.error || "Erreur lors de la connexion ❌");
+    }
+ };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FAFAF9] to-[#E5E7EB] flex items-center justify-center font-sans">
