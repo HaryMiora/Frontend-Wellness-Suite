@@ -1,13 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+   // ✅ Détecter un token dans l'URL après Google Login
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
+
+    if (token) {
+      localStorage.setItem("token", token);
+      alert("Connexion réussie avec Google ✅");
+
+      // Nettoyer l'URL pour retirer le token
+      window.history.replaceState({}, document.title, "/dashboard");
+
+      // Rediriger vers le dashboard
+      window.location.href = "/dashboard";
+    }
+  }, []);
+
   const handleGoogleLogin = () => {
-    alert('Connexion avec Google en cours... (À implémenter avec une API)');
-  };
+    window.location.href = "http://localhost:5000/api/auth/google";
+    };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
